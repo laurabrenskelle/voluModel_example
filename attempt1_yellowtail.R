@@ -21,13 +21,13 @@ nrow(occ_clean)
 # now 69363 occurrences
 
 # downloaded the MBON occurrence data from OBIS so I can pull those datasetIDs to match to what we grabbed from GBIF
+# you can find these data here: https://mapper.obis.org/?instituteid=23070
 mbon <- read_csv("MBONdata/Occurrence.csv")
 
 # matching the column name to the one in occ_clean to facilitate matching
 names(mbon)[names(mbon) == "datasetid"] <- "datasetID"
 
 # grabbing all of the unique & not empty datasetIDs from the MBON occurrence data frame
-# you can find these data here: https://mapper.obis.org/?instituteid=23070
 mbondatasets <- mbon %>%
   filter(!is.na(datasetID)) %>%
   distinct(datasetID)
