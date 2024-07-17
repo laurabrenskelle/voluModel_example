@@ -33,6 +33,6 @@ mbondatasets <- mbon %>%
 
 # matching datasetIDs across the two data frames to determine what proportion of the occurrence data we grabbed comes from U.S. MBON projects
 occ_ioos <- occ_clean %>%
-  semi_join(mbondatasets, by = "datasetid")
+  semi_join(mbondatasets, by = "datasetID")
 (nrow(occ_ioos)/nrow(occ_clean))*100
 # 68.7% of the occurrence records are from U.S. MBON projects
