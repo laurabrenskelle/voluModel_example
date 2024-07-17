@@ -1,5 +1,6 @@
 library(dplyr)
 library(rgbif)
+library(voluModel)
 
 # we will use the download ID to download the occurrences using rgbif
 occurrence <- occ_download_get("0020688-240626123714530") %>% 
@@ -22,7 +23,7 @@ nrow(occ_clean)
 # downloaded the MBON occurrence data from OBIS so I can pull those datasetIDs to match to what we grabbed from GBIF
 mbon <- read_csv("MBONdata/Occurrence.csv")
 
-#matching the column name to the one in occ_clean to facilitate matching
+# matching the column name to the one in occ_clean to facilitate matching
 names(mbon)[names(mbon) == "datasetid"] <- "datasetID"
 
 # grabbing all of the unique & not empty datasetIDs from the MBON occurrence data frame
