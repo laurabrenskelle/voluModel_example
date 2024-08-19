@@ -2,6 +2,10 @@ library(readr)
 library(dplyr)
 library(rgbif)
 library(voluModel)
+library(tibble)
+library(ggplot2)
+library(fields)
+library(terra)
 
 # we will use the download ID to download the occurrences using rgbif
 occurrence <- occ_download_get("0020688-240626123714530") %>% 
