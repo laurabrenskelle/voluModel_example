@@ -1,3 +1,4 @@
+library(readr)
 library(dplyr)
 library(rgbif)
 library(voluModel)
@@ -16,7 +17,7 @@ nrow(occ_clean)
 
 # remove occurrences without date information
 occ_clean <- occ_clean %>%
-  filter(eventDate != "")
+  filter(year != "")
 nrow(occ_clean)
 # now 69363 occurrences
 
@@ -37,3 +38,14 @@ occ_ioos <- occ_clean %>%
   semi_join(mbondatasets, by = "datasetID")
 (nrow(occ_ioos)/nrow(occ_clean))*100
 # 68.7% of the occurrence records are from U.S. MBON projects
+
+# map occurrences
+pointMap(occs = occ_clean, land = land, landCol = "black", spName = "Ocyurus chrysurus", 
+         ptSize = 2, ptCol = "orange")
+
+# open the .shp file from WOA
+# file was downloaded from https://www.ncei.noaa.gov/access/world-ocean-atlas-2023/bin/woa23.pl
+temperature <- "woa23_decav_t00mn01.shp"
+temp <- vect(temperature)
+
+head(temp)
